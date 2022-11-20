@@ -1,7 +1,6 @@
 function getFormData(form) {
     return {
         people: form['people'].value,
-        party: form['party'].value,
         budget: form['budget'].value,
         food: form['food'].value,
         watch: form['watch'].value,
@@ -27,9 +26,10 @@ function sendData() {
         options);
     fetchRes.then(res =>
         res.json()).then(d => {
-            let result = document.getElementById("result");
-            result.innerHTML = JSON.stringify(d);
-            // TODO mudar a classe de um elemento para pop up
+            let url = window.location.href;
+            url = url.replace('index', d.lugar);
+            console.log(url);
+            window.location.href = url;
         }).catch((e) => {
             console.log(e);
         })

@@ -9,53 +9,48 @@ class WhereToGo(KnowledgeEngine):
 
     @Rule(Fact(action='where-to-go'),
           Fact(people=W()),
-          Fact(party=W()),
           Fact(budget=W()),
           NOT(Fact(food='burguer')),
           Fact(watch='bigTv'),
-          Fact(transport=W()))
+          Fact(transport='foot'))
     def cascata(self):
         self.message = 'cascata'
 
     @Rule(Fact(action='where-to-go'),
           Fact(people=W()),
-          OR(Fact(party='alone'), Fact(party='friends')),
           NOT(Fact(budget='cheap')),
           NOT(Fact(food='plate')),
           Fact(watch='tv'),
-          Fact(transport=W()))
+          Fact(transport='foot'))
     def fuxico(self):
         self.message = 'fuxico'
 
     @Rule(Fact(action='where-to-go'),
-          Fact(people='few'),
-          Fact(party='friends'),
+          Fact(people=W()),
           Fact(budget=W()),
           NOT(Fact(food='plate')),
           Fact(watch='bigTv'),
-          Fact(transport=W()))
+          Fact(transport='foot'))
     def nova_rep(self):
-        self.message = 'nova_rep'
+        self.message = 'novarep'
 
     @Rule(Fact(action='where-to-go'),
           NOT(Fact(people='lot')),
-          OR(Fact(party='friends'), Fact(party='alone')),
           OR(Fact(budget='expensive'), Fact(budget='veryExpensive')),
           OR(NOT(Fact(food='plate'), Fact(food='burguer'))),
           Fact(watch='tv'),
           Fact(transport='car'))
     def pirata(self):
-        self.message = 'o pirata'
+        self.message = 'pirata'
 
     @Rule(Fact(action='where-to-go'),
-          Fact(people='lot'),
-          OR(Fact(party='alone'), Fact(party='friends')),
+          Fact(people=W()),
           OR(Fact(budget='expensive'), Fact(budget='veryExpensive')),
           OR(NOT(Fact(food='plate'), Fact(food='burguer'))),
           Fact(watch='bigTv'),
           Fact(transport='car'))
     def barao(self):
-        self.message = 'barão'
+        self.message = 'barao'
 
     def result(self):
         return self.message
