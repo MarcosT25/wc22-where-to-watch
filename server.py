@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
-from ExpertSystem import ExpertSystem
+from ExpertSystem import WhereToGo
 from experta import Fact
 
 app = Flask(__name__)
@@ -12,12 +12,12 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @cross_origin()
 def get_data():
     content = request.json
-    contentCost = content["input"]
-    
-    engine = ExpertSystem()
+    engine = WhereToGo()
     engine.reset()
-    engine.declare(Fact(input=contentCost))
+    for key, value in content.items():
+        engine.declare(Fact.from_iter({key: value}))
     engine.run()
     
     result = engine.result()
+    print(result)
     return jsonify({"lugar": result})

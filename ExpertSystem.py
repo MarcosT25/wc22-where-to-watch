@@ -26,52 +26,52 @@ class WhereToGo(KnowledgeEngine):
         yield Fact(action='where-to-go')
 
     @Rule(Fact(action='where-to-go'),
-          Fact(friends='many'),
-          Fact(type=W()),
+          Fact(people='lot'),
+          Fact(party=W()),
           Fact(budget='cheap'),
-          OR(Fact(eat='pf'), Fact(eat='porcao')),
-          Fact(watch='telao'),
+          OR(Fact(food='plate'), Fact(food='portion')),
+          Fact(watch='bigTv'),
           Fact(transport='foot'))
     def cascata(self):
         self.message = 'cascata'
 
     @Rule(Fact(action='where-to-go'),
-          Fact(friends='many'),
-          OR(Fact(type='alone'), Fact(type='friends')),
+          Fact(people='lot'),
+          OR(Fact(party='alone'), Fact(party='friends')),
           Fact(budget='medium'),
-          OR(Fact(eat='burgao'), Fact(eat='porcao')),
+          OR(Fact(food='burguer'), Fact(food='portion')),
           Fact(watch='tv'),
           Fact(transport='foot'))
     def fuxico(self):
         self.message = 'fuxico'
 
     @Rule(Fact(action='where-to-go'),
-          Fact(friends='few'),
-          Fact(type='friends'),
+          Fact(people='few'),
+          Fact(party='freinds'),
           Fact(budget='cheap'),
-          OR(Fact(eat='burgao'), Fact(eat='porcao')),
-          Fact(watch='telao'),
+          OR(Fact(food='burguer'), Fact(food='portion')),
+          Fact(watch='bigTv'),
           Fact(transport='foot'))
     def nova_rep(self):
         self.message = 'nova_rep'
 
     @Rule(Fact(action='where-to-go'),
-          Fact(friends='few'),
-          OR(Fact(type='friends'), Fact(type='alone')),
+          Fact(people='few'),
+          OR(Fact(party='friends'), Fact(party='alone')),
           Fact(budget='expensive'),
-          Fact(eat='porcao'),
+          Fact(food='portion'),
           Fact(watch='tv'),
-          Fact(transport='uber'))
+          Fact(transport='car'))
     def pirata(self):
         self.message = 'o pirata'
 
     @Rule(Fact(action='where-to-go'),
-          Fact(friends='many'),
-          OR(Fact(type='alone'), Fact(type='friends')),
+          Fact(people='lot'),
+          OR(Fact(party='alone'), Fact(party='friends')),
           Fact(budget='expensive'),
-          Fact(eat='porcao'),
-          Fact(watch='telao'),
-          Fact(transport='uber'))
+          Fact(food='portion'),
+          Fact(watch='bigTv'),
+          Fact(transport='car'))
     def barao(self):
         self.message = 'barão'
 
