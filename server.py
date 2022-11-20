@@ -12,6 +12,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @cross_origin()
 def get_data():
     content = request.json
+    print(content)
     engine = WhereToGo()
     engine.reset()
     for key, value in content.items():
@@ -19,5 +20,8 @@ def get_data():
     engine.run()
     
     result = engine.result()
+    if result == '':
+        result = 'casa'
+    
     print(result)
-    return jsonify({"lugar": result})
+    return {"lugar": result}

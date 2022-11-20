@@ -1,23 +1,5 @@
 from experta import *
 
-class ExpertSystem(KnowledgeEngine):
-    message = ''
-
-    @Rule(Fact(input='cheap'))
-    def cheap(self):
-        self.message = 'Cascata Do Vinho'
-
-    @Rule(Fact(input='medium'))
-    def medium(self):
-        self.message = 'Fuxico'
-
-    @Rule(Fact(input='expensive'))
-    def expensive(self):
-        self.message = 'Barão'
-
-    def result(self):
-        return self.message
-
 class WhereToGo(KnowledgeEngine):
     message = ''
 
@@ -26,40 +8,40 @@ class WhereToGo(KnowledgeEngine):
         yield Fact(action='where-to-go')
 
     @Rule(Fact(action='where-to-go'),
-          Fact(people='lot'),
+          Fact(people=W()),
           Fact(party=W()),
-          Fact(budget='cheap'),
-          OR(Fact(food='plate'), Fact(food='portion')),
+          Fact(budget=W()),
+          NOT(Fact(food='burguer')),
           Fact(watch='bigTv'),
-          Fact(transport='foot'))
+          Fact(transport=W()))
     def cascata(self):
         self.message = 'cascata'
 
     @Rule(Fact(action='where-to-go'),
-          Fact(people='lot'),
+          Fact(people=W()),
           OR(Fact(party='alone'), Fact(party='friends')),
-          Fact(budget='medium'),
-          OR(Fact(food='burguer'), Fact(food='portion')),
+          NOT(Fact(budget='cheap')),
+          NOT(Fact(food='plate')),
           Fact(watch='tv'),
-          Fact(transport='foot'))
+          Fact(transport=W()))
     def fuxico(self):
         self.message = 'fuxico'
 
     @Rule(Fact(action='where-to-go'),
           Fact(people='few'),
-          Fact(party='freinds'),
-          Fact(budget='cheap'),
-          OR(Fact(food='burguer'), Fact(food='portion')),
+          Fact(party='friends'),
+          Fact(budget=W()),
+          NOT(Fact(food='plate')),
           Fact(watch='bigTv'),
-          Fact(transport='foot'))
+          Fact(transport=W()))
     def nova_rep(self):
         self.message = 'nova_rep'
 
     @Rule(Fact(action='where-to-go'),
-          Fact(people='few'),
+          NOT(Fact(people='lot')),
           OR(Fact(party='friends'), Fact(party='alone')),
-          Fact(budget='expensive'),
-          Fact(food='portion'),
+          OR(Fact(budget='expensive'), Fact(budget='veryExpensive')),
+          OR(NOT(Fact(food='plate'), Fact(food='burguer'))),
           Fact(watch='tv'),
           Fact(transport='car'))
     def pirata(self):
@@ -68,8 +50,8 @@ class WhereToGo(KnowledgeEngine):
     @Rule(Fact(action='where-to-go'),
           Fact(people='lot'),
           OR(Fact(party='alone'), Fact(party='friends')),
-          Fact(budget='expensive'),
-          Fact(food='portion'),
+          OR(Fact(budget='expensive'), Fact(budget='veryExpensive')),
+          OR(NOT(Fact(food='plate'), Fact(food='burguer'))),
           Fact(watch='bigTv'),
           Fact(transport='car'))
     def barao(self):

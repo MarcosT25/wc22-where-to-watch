@@ -1,9 +1,20 @@
+function getFormData(form) {
+    return {
+        people: form['people'].value,
+        party: form['party'].value,
+        budget: form['budget'].value,
+        food: form['food'].value,
+        watch: form['watch'].value,
+        transport: form['transport'].value
+    }
+}
+
 function sendData() {
     event.preventDefault();
     let url = "http://localhost:5000/get-data";
 
-    let input = document.forms["myForm"]["budget"].value;
-    let data = { "input": input }
+    const form = document.forms["myForm"];
+    const data = getFormData(form);
     let options = {
         method: 'POST',
         headers: {
@@ -16,9 +27,8 @@ function sendData() {
         options);
     fetchRes.then(res =>
         res.json()).then(d => {
-            let result = document.createElement("p");
+            let result = document.getElementById("result");
             result.innerHTML = JSON.stringify(d);
-            document.querySelector("body").appendChild(result);
             // TODO mudar a classe de um elemento para pop up
         }).catch((e) => {
             console.log(e);
