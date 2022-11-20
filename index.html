@@ -5,18 +5,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Copa do Mundo em Limeira</title>
 </head>
 
 <body>
     <form name="myForm" onsubmit="sendData()">
+        <p>Quantas pessoas vão com você?</p>
+        <input type="radio" name="people" value="alone">
+        <span>Eu e Deus</span>
+        <input type="radio" name="people" value="few">
+        <span>1-5 pessoas</span>
+        <input type="radio" name="people" value="lot">
+        <span>Mais de 5 pessoas</span>
+        <p>Qual o tipo de rolê?</p>
+        <input type="radio" name="party" value="alone">
+        <span>Sozinho, foco total no jogo</span>
+        <input type="radio" name="party" value="friends">
+        <span>Com os amigos para comemorar o hexa</span>
+        <input type="radio" name="party" value="family">
+        <span>Com a família para dar sorte</span>
         <p>Quanto você pode gastar?</p>
         <input type="radio" name="budget" value="cheap">
-        <span>R$1 a R$10</span>
+        <span>To zerado</span>
         <input type="radio" name="budget" value="medium">
-        <span>R$11 a R$25</span>
+        <span>R$5 a R$25</span>
         <input type="radio" name="budget" value="expensive">
-        <span>R$26 a R$50</span>
+        <span>R$25 a R$45</span>
+        ]<input type="radio" name="budget" value="veryExpensive">
+        <span>Mais de R$45</span>
+        <p>Pretende comer no local?</p>
+        <input type="radio" name="food" value="nothing">
+        <span>Nadinha, foco no hexa</span>
+        <input type="radio" name="food" value="portion">
+        <span>Porçãozinha é de lei</span>
+        <input type="radio" name="food" value="plate">
+        <span>Quero PF as 16h</span>
+        ]<input type="radio" name="food" value="burguer">
+        <span>Burgão</span>
+        <p>TV ou Telão?</p>
+        <input type="radio" name="watch" value="tv">
+        <span>TVzinha</span>
+        <input type="radio" name="watch" value="bigTv">
+        <span>Telão pra ver tudo</span>
+        <p>Como vocÊ pretende chegar até o local?</p>
+        <input type="radio" name="transport" value="car">
+        <span>Carro/Uber/Transporte público</span>
+        <input type="radio" name="transport" value="foot">
+        <span>Apé</span>
         <button type="submit">Enviar</button>
     </form>
     <script src="client.js"></script>
