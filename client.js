@@ -1,6 +1,7 @@
 function sendData() {
     event.preventDefault();
     let url = "http://localhost:5000/get-data";
+
     let input = document.forms["myForm"]["budget"].value;
     let data = { "input": input }
     let options = {
