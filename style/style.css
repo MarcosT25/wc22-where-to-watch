@@ -6,19 +6,23 @@ body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   align-items: center;
 }
-h1 {
+
+h1,
+i {
   text-align: center;
   color: #f0ff42;
   text-transform: uppercase;
 }
+
 form,
 .infoBar {
   width: 50%;
+  height: 80%;
   background-color: #f0ff42;
   text-align: center;
   border-radius: 5em;
   margin: auto;
-  padding: 2%;
+  padding: 0.5%;
   padding-left: 10%;
   padding-right: 10%;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -31,6 +35,7 @@ form p {
 form input {
   margin: 1%;
 }
+
 form input[type="radio"] {
   font: inherit;
   color: #3975ce;
@@ -56,17 +61,22 @@ a {
   color: #379237;
   font-weight: 600;
 }
+
 .infoBar1 {
-  display: flex;
   align-items: center;
-  margin: 1%;
+  margin: 0.5%;
 }
 
-img {
-  width: 25em;
-  height: 15em;
-}
+img,
 iframe {
-  width: 25em;
-  height: 15em;
+  width: 300px;
+  height: 250px;
+}
+
+@media (max-width: 600px) {
+  img,
+  iframe {
+    width: 50%;
+    height: 20%;
+  }
 }
